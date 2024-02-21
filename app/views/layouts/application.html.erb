@@ -2,15 +2,51 @@
 <html>
   <head>
     <title>Delivery Tracker 1</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+
+    <% if current_user != nil %>
+
+    <nav>
+        <a href="/">Delivery Tracker</a>
+
+        <% if notice.present? %>
+        <div style="color: green">
+            <%= notice %>
+        </div>
+        <% end %>
+
+        <% if alert.present? %>
+        <div style="color: red">
+            <%= alert %>
+        </div>
+        <% end %>
+        |
+        <a href="/users/edit">Edit profile</a>
+        |
+        <a href="/users/sign_out">Sign out</a>
+    </nav>
+
+    <% else %>
+
+    <nav>
+        <a href="/users/sign_up">Sign up</a>
+        |
+        <a href="/users/sign_in">Sign in</a>
+    </nav>
+   
+    <% end %>
+
+    <hr>
+
+    <% if current_user != nil %>
+
+        <%= yield %>
+   
+    <% end %>
+
+
+
   </body>
 </html>
