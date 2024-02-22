@@ -1,5 +1,7 @@
 <div>
   <div>
+
+  <% if current_user != nil %>
     <h2>
       Expecting a package?
     </h2>
@@ -41,72 +43,7 @@
 <div class="waiting_on">
   <h2>Waiting on</h2>
   <ul>
-      <li>
-        <div>Aerodynamic Marble Watch</div>
 
-        <div style="color: red">
-          Supposed to arrive on
-          2024-01-29
-        </div>
-
-        <div>
-          
-        </div>
-
-        <div>
-          <form action="/modify_delivery/184037" method="post">
-            <input type="hidden" name="arrived" value="true">
-
-            <button>Mark as received</button>
-          </form>
-        </div>
-        
-        <br>
-      </li>
-      <li>
-        <div>Small Aluminum Bag</div>
-
-        <div style="color: red">
-          Supposed to arrive on
-          2024-02-05
-        </div>
-
-        <div>
-          
-        </div>
-
-        <div>
-          <form action="/modify_delivery/184036" method="post">
-            <input type="hidden" name="arrived" value="true">
-
-            <button>Mark as received</button>
-          </form>
-        </div>
-        
-        <br>
-      </li>
-      <li>
-        <div>Rustic Iron Bottle</div>
-
-        <div style="color: red">
-          Supposed to arrive on
-          2024-02-11
-        </div>
-
-        <div>
-          
-        </div>
-
-        <div>
-          <form action="/modify_delivery/184038" method="post">
-            <input type="hidden" name="arrived" value="true">
-
-            <button>Mark as received</button>
-          </form>
-        </div>
-        
-        <br>
-      </li>
       <li>
         <div>Lightweight Leather Hat</div>
 
@@ -121,94 +58,6 @@
 
         <div>
           <form action="/modify_delivery/184045" method="post">
-            <input type="hidden" name="arrived" value="true">
-
-            <button>Mark as received</button>
-          </form>
-        </div>
-        
-        <br>
-      </li>
-      <li>
-        <div>Intelligent Aluminum Bench</div>
-
-        <div style="">
-          Supposed to arrive on
-          2024-02-25
-        </div>
-
-        <div>
-          
-        </div>
-
-        <div>
-          <form action="/modify_delivery/184043" method="post">
-            <input type="hidden" name="arrived" value="true">
-
-            <button>Mark as received</button>
-          </form>
-        </div>
-        
-        <br>
-      </li>
-      <li>
-        <div>Heavy Duty Iron Shirt</div>
-
-        <div style="">
-          Supposed to arrive on
-          2024-02-28
-        </div>
-
-        <div>
-          
-        </div>
-
-        <div>
-          <form action="/modify_delivery/184042" method="post">
-            <input type="hidden" name="arrived" value="true">
-
-            <button>Mark as received</button>
-          </form>
-        </div>
-        
-        <br>
-      </li>
-      <li>
-        <div>Rustic Wool Knife</div>
-
-        <div style="">
-          Supposed to arrive on
-          2024-03-02
-        </div>
-
-        <div>
-          USPS tracking #774559509002
-        </div>
-
-        <div>
-          <form action="/modify_delivery/184041" method="post">
-            <input type="hidden" name="arrived" value="true">
-
-            <button>Mark as received</button>
-          </form>
-        </div>
-        
-        <br>
-      </li>
-      <li>
-        <div>Lightweight Bronze Knife</div>
-
-        <div style="">
-          Supposed to arrive on
-          2024-03-03
-        </div>
-
-        <div>
-          USPS tracking #57886758540
-        </div>
-
-        <div>
-          <form action="/modify_delivery/184039" method="post">
             <input type="hidden" name="arrived" value="true">
 
             <button>Mark as received</button>
@@ -237,16 +86,7 @@
           </small>
         </div>
       </li>
-      <li>
-        <div>Rustic Leather Shirt</div>
-
-        <div>
-          <small>
-            Updated 40 minutes ago
-
-            <a href="/delete_delivery/184040">Delete</a>
-          </small>
-        </div>
-      </li>
   </ul>
 </div>
+
+<% end %>

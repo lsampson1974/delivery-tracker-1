@@ -39,14 +39,10 @@
     <% end %>
 
     <hr>
+    <%= notice %>
+  
 
-    <% if current_user != nil %>
-
-        <%= yield %>
-   
-    <% end %>
-
-
+    <%= yield %>
 
   </body>
 </html>

@@ -1,10 +1,17 @@
 class DeliveryController < ApplicationController
 
     def index
-      puts "TEST"
 
-      render ({ :template => "delivery/index" })
+      if current_user != nil
 
-    end
+          render ({ :template => "delivery/index" })
+
+      else
+
+          redirect_to("/users/sign_in", { :notice => "You need to sign in or sign up before continuing."})
+
+      end # Of condition.
+
+    end # Of method.
 
 end # Of class
