@@ -6,5 +6,8 @@ Rails.application.routes.draw do
 
   root to: "delivery#index"
 
-  # root "articles#index"
+  post("/insert_delivery", { :controller => "delivery", :action => "insert_delivery"})
+
+
+
 end

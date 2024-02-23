@@ -1,92 +1,97 @@
 <div>
-  <div>
+    <div>
+    <% if current_user != nil %>
+            <%= notice %>
+            <h1> Delivery Tracker </h1>
+  
+            <p>Know if something gets lost in the mail.</p>
 
-  <% if current_user != nil %>
-    <h2>
-      Expecting a package?
-    </h2>
+            <h2>Expecting a package?</h2>
 
-    <form action="/insert_delivery" method="post">
-      <div>
-        <label for="description_box">
-          Description
-        </label>
+            <form action="/insert_delivery" method="post">
+                <div>
+                    <label for="description_box">Description</label>
 
-        <input type="text" id="description_box" name="query_description">
-      </div>
+                    <input type="text" id="description_box" name="query_description">
+                </div>
 
-      <div>
-        <label for="supposed_to_arrive_on_box">
-          Supposed to arrive on
-        </label>
+                <div>
+                    <label for="supposed_to_arrive_on_box">Supposed to arrive on </label>
 
-        <input type="date" id="supposed_to_arrive_on_box" name="query_supposed_to_arrive_on">
-      </div>
+                    <input type="date" id="supposed_to_arrive_on_box" name="query_supposed_to_arrive_on">
+                </div>
 
-      <div>
-        <label for="details_box">
-          Details
-        </label>
+                <div>
+                    <label for="details_box">Details</label>
 
-        <textarea id="details_box" name="query_details" rows="3"></textarea>
-      </div>
+                    <textarea id="details_box" name="query_details" rows="3"></textarea>
+                </div>
 
-      <button>
-        Log delivery
-      </button>
-    </form>
-  </div>
+                <button>Log delivery</button>
+            </form>
+    </div>
 </div>
 
 <hr>
 
 <div class="waiting_on">
-  <h2>Waiting on</h2>
-  <ul>
 
-      <li>
-        <div>Lightweight Leather Hat</div>
 
-        <div style="">
-          Supposed to arrive on
-          2024-02-22
-        </div>
+    <h2>Waiting on</h2>
 
-        <div>
-          
-        </div>
+    <ul>
 
-        <div>
-          <form action="/modify_delivery/184045" method="post">
-            <input type="hidden" name="arrived" value="true">
+    <%  @deliveries.each do |item|  %>
+        <% if item.status == "waiting" %>
 
-            <button>Mark as received</button>
-          </form>
-        </div>
+            <li>
+                <div><%= item.name %></div>
+
+                <div style="">Supposed to arrive on <%= item.arrival_date %></div>
         
-        <br>
-      </li>
-  </ul>
+                <div><%= item.description %></div>
+
+                <div>
+                    <form action="/modify_delivery/<%= item.id %>" method="post">
+                        <input type="hidden" name="arrived" value="true">
+
+                        <button>Mark as received</button>
+                    </form>
+                </div>
+                <br>
+            </li>
+
+        <% end # Of condition block %>
+
+    <% end # Of loop. %>
+  
+    </ul>
 </div>
 
 <hr>
 
 <div class="received">
-  <h2>Received</h2>
 
-  <ul>
-      <li>
-        <div>Intelligent Concrete Car</div>
+    <h2>Received</h2>
 
-        <div>
-          <small>
-            Updated 40 minutes ago
+    <ul>
 
-            <a href="/delete_delivery/184044">Delete</a>
-          </small>
-        </div>
-      </li>
-  </ul>
+    <%  @deliveries.each do |item|  %>
+
+        <% if item.status == "recieved" %>
+
+            <li>
+                <div><%= item.name %></div>
+
+                <div><small>Updated 40 minutes ago<a href="/delete_delivery/<%= item.id %>"Delete</a></small></div>
+            </li>
+
+        <% end # Of condition block %>
+
+    <% end # Of loop. %>
+
+    </ul>
+
+    <% end # Of outermost condition check.  ( check is user = nil. ) %>
+
 </div>
-
-<% end %>
