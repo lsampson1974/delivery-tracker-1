@@ -2,7 +2,21 @@
 <html>
   <head>
     <title>Delivery Tracker 1</title>
+
+      <style>
+  
+     .waiting_on {
+         background-color: lightgoldenrodyellow;
+     }
+
+     .received {
+         background-color: lightgreen;
+     }
+
+  </style>
+
   </head>
+
 
   <body>
 
@@ -10,18 +24,6 @@
 
     <nav>
         <a href="/">Delivery Tracker</a>
-
-        <% if notice.present? %>
-        <div style="color: green">
-            <%= notice %>
-        </div>
-        <% end %>
-
-        <% if alert.present? %>
-        <div style="color: red">
-            <%= alert %>
-        </div>
-        <% end %>
         |
         <a href="/users/edit">Edit profile</a>
         |
@@ -39,10 +41,7 @@
     <% end %>
 
     <hr>
-    <%= notice %>
-  
-
-    <%= yield %>
+        <%= yield %>
 
   </body>
 </html>
